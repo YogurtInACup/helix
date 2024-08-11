@@ -415,7 +415,28 @@ end
 function CreateItemInteractionMenu(icon, menu, itemTable)
 end
 
---- @realm client
+--- Defines the tab buttons shown in the inventory menu, such as config, help, inventory, you, etc.
+-- @realm client
+-- @tab tabs The tabs to be shown in the menu. Edit this table to affect what tabs are shown.
+--
+-- The key of the table defines the header text of the tab, and as such must be a string.
+-- The only value of a defined tab can be a function, see the first example.
+-- The accepted values of the table are:
+--
+-- - `buttonColor` - (color) The color of the button when hovered over.
+-- - `bDefault` - (bool) Whether this tab should default to being selected when opening the menu for the first time.
+-- - `PopulateTabButton` - (function) The function ran when this tab is populated. Arguments: info, container
+-- - `Sections` - (table) When this tab is selected, it creates smaller tabs below itself. Uses the arguments shown here.
+-- - `Create` - (function) The function ran when this tab is created. Arguments: info, container
+-- - `OnSelected` - (function) The function ran when this tab is selected. Arguments: info, container
+--
+-- An example taken from the default scoreboard.
+-- @usage hook.Add("CreateMenuButtons", "ixScoreboard", function(tabs)
+--	  tabs["scoreboard"] = function(container)
+--		  container:Add("ixScoreboard")
+--	  end
+--  end)
+-- @see BuildBusinessMenu
 function CreateMenuButtons(tabs)
 end
 
